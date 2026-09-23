@@ -1,6 +1,6 @@
 # hw01-software-testing
 
-Exported on: 9/23/2026, 04:21:39 PM
+Exported on: 9/23/2026, 08:53:06 PM
 
 ---
 
@@ -225,3 +225,148 @@ giải thích ngắn gọn lý do vì sao AI lại bỏ sót 3 Edge Cases này �
 Đoạn văn giải thích nguyên nhân AI bỏ sót 3 Edge Cases:
 
 > *"AI chỉ test từng tính năng theo đúng trình tự ghi trong tài liệu và mặc định mọi thao tác đều diễn ra ở điều kiện trung gian, lý tưởng. Nó test "rút chốt tuốc-năng để dừng xoay" nhưng không bao giờ suy luận ra việc thời điểm rút chốt quan trọng không kém gì hành động rút — khi đầu quạt đang ở điểm tận cùng hành trình, bánh cam đang chịu tải cơ học cực đại nên chốt nặng tay hơn hẳn so với rút ở giữa hành trình. Tương tự, AI chỉ follow happy path ("bấm nút Off để tắt") mà không suy luận được hành vi thực tế của người dùng là bấm lại đúng nút đang gài để tắt. Và dĩ nhiên không có ngón tay nên AI không cảm nhận được việc bấm nút ở giữa hành trình sẽ kéo nút cũ bật ra theo, khiến cả 2 cùng nhả và quạt tắt nhầm. Tóm lại, cả 3 edge case đều xuất hiện từ thói quen thao tác thực tế của người dùng mà AI đọc tài liệu mô tả chức năng không bao giờ suy luận được."*
+
+---
+
+**You:** *(23/09/2026, 5:11 PM)*
+t chuẩn bị quay video demo cho 9 test case: TC01, TC02, TC04, TC05, TC07, TC08, TC11, TC15 và TC18 (edge case 3). soạn kịch bản lời thoại ngắn gọn cho t vừa quay vừa nói.
+
+**Gemini (Gemini 3.6 Flash):** *(23/09/2026, 5:12 PM)*
+Dưới đây là kịch bản lời thoại ngắn gọn cho từng video:
+
+* **TC01 (Bật Mức 1 - PASS):** "TC01 - Kiểm tra khởi động Mức 1 từ trạng thái Tắt. Quạt đang tắt, phích cắm đã cắm. Tôi nhấn nút số 1... Nút lún xuống chắc chắn, phát ra tiếng tạch gài khớp, động cơ khởi động êm ái ở mức 1. Test case PASS."
+* **TC02 (Nảy phím cũ - PASS):** "TC02 - Kiểm tra cơ chế tự nảy phím khi đổi tốc độ. Quạt đang chạy mức 1. Tôi nhấn nút mức 2, nút 1 lập tức nảy lên. Tiếp tục nhấn nút 3, nút 2 nảy lên hoàn toàn. Cơ chế liên khóa hoạt động đúng, PASS."
+* **TC04 (Bấm 2 phím cùng lúc - PASS):** "TC04 - Kiểm tra bấm 2 phím cấp độ cùng lúc. Quạt đang tắt. Tôi dùng hai ngón tay nhấn đồng thời nút 1 và nút 2... Hai nút bị khựng lại, không nút nào gài khớp được, quạt không chạy và không chập điện. Đạt yêu cầu an toàn, PASS."
+* **TC05 (Bật tuốc-năng - PASS):** "TC05 - Kiểm tra bật tuốc-năng đảo hướng. Quạt đang ở mức 2. Tôi nhấn chốt kéo phía sau củ quạt xuống... Chốt sập vào khớp nhông, củ quạt bắt đầu xoay đều trái phải. PASS."
+* **TC07 (Cản tuốc-năng trượt an toàn - PASS):** "TC07 - Kiểm tra cơ chế trượt an toàn của tuốc-năng. Quạt đang xoay, tôi dùng tay giữ nhẹ củ quạt lại... Nghe tiếng tạch tạch của bộ ly hợp trượt an toàn, không gãy nhông và không đứng cháy động cơ. PASS."
+* **TC08 (Cúi/ngửa cổ quạt - PASS):** "TC08 - Kiểm tra chỉnh góc cúi ngửa cổ quạt. Quạt đang chạy mức 3. Tôi nâng củ quạt ngửa lên tối đa, rồi gập cúi xuống tối đa... Khớp cổ quạt phát tiếng click rõ và giữ định hình chắc chắn khi quạt chạy mức cao nhất. PASS."
+* **TC11 (Gờ giữ dây nguồn - PASS):** "TC11 - Kiểm tra gờ giữ dây điện tại chân đế. Quạt đang chạy. Tôi kéo nhẹ dây nguồn theo phương ngang và dọc... Gờ nhựa giữ dây rất chặt, kết nối điện liên tục không bị gián đoạn. PASS."
+* **TC15 (Rút cắm lại nguồn khi nút đang gài - PASS):** "TC15 - Kiểm tra cắm lại nguồn khi phím đang gài. Quạt đang chạy mức 2. Tôi rút phích cắm ra rồi cắm lại... Do phím mức 2 vẫn gài nấc cơ học, quạt lập tức chạy lại ở mức 2 an toàn. PASS."
+* **TC18 / TC-EDGE-03 (Bấm nút dở chừng - FAIL):** "Cuối cùng là TC18 hay Edge Case 03 - Kiểm tra thao tác bấm nút dở chừng (Half-press). Quạt đang chạy Mức 1. Tôi ấn nhẹ nút Mức 2 khoảng 50% hành trình rồi thả ra... Nút Mức 1 bị đẩy nảy ra làm tắt quạt, nhưng nút Mức 2 chưa đủ lực gài ngàm nên cũng bật ra theo, khiến quạt bị tắt nhầm. Test case này FAIL."
+
+---
+
+**You:** *(23/09/2026, 7:13 PM)*
+xuất cho t title và description video để t copy paste lên YouTube theo form:
+Tiêu đề: `[Software Testing] HW01 - TC...`
+Mô tả gồm: Tên Requirement, Mô tả ngắn test case, Họ tên: Trà Văn Sỹ, MSSV: 23120197.
+
+**Gemini (Gemini 3.6 Flash):** *(23/09/2026, 7:14 PM)*
+Dưới đây là Tiêu đề và Mô tả đầy đủ cho cả 9 video để bạn copy trực tiếp lên YouTube Studio:
+
+**1. Video TC01:**
+
+* *Tiêu đề:* `[Software Testing] HW01 - TC01_KiemTraMuc1_PASS`
+* *Mô tả:*
+
+```text
+[Requirement3] Thiết kế và thực thi các test case cho thiết bị gia dụng (quạt máy)
+Demo TC01 - Bật quạt Mức 1 từ trạng thái Tắt (PASS).
+
+Họ tên: Trà Văn Sỹ
+MSSV: 23120197
+```
+
+**2. Video TC02:**
+
+* *Tiêu đề:* `[Software Testing] HW01 - TC02_NayPhimChuyenLevel_PASS`
+* *Mô tả:*
+
+```text
+[Requirement3] Thiết kế và thực thi các test case cho thiết bị gia dụng (quạt máy)
+Demo TC02 - Tự động nảy phím cũ khi chuyển mức 1->2->3 (PASS).
+
+Họ tên: Trà Văn Sỹ
+MSSV: 23120197
+```
+
+**3. Video TC04:**
+
+* *Tiêu đề:* `[Software Testing] HW01 - TC04_Bam2NutCungLuc_PASS`
+* *Mô tả:*
+
+```text
+[Requirement3] Thiết kế và thực thi các test case cho thiết bị gia dụng (quạt máy)
+Demo TC04 - Bấm đồng thời nút 1 và 2, hai nút bị khựng không gài (PASS).
+
+Họ tên: Trà Văn Sỹ
+MSSV: 23120197
+```
+
+**4. Video TC05:**
+
+* *Tiêu đề:* `[Software Testing] HW01 - TC05_BatTuocNangXoay_PASS`
+* *Mô tả:*
+
+```text
+[Requirement3] Thiết kế và thực thi các test case cho thiết bị gia dụng (quạt máy)
+Demo TC05 - Ấn chốt tuốc-năng để quạt xoay đảo hướng (PASS).
+
+Họ tên: Trà Văn Sỹ
+MSSV: 23120197
+```
+
+**5. Video TC07:**
+
+* *Tiêu đề:* `[Software Testing] HW01 - TC07_CanTuocNangTruotAnToan_PASS`
+* *Mô tả:*
+
+```text
+[Requirement3] Thiết kế và thực thi các test case cho thiết bị gia dụng (quạt máy)
+Demo TC07 - Cản hướng xoay, nhông ly hợp trượt an toàn (PASS).
+
+Họ tên: Trà Văn Sỹ
+MSSV: 23120197
+```
+
+**6. Video TC08:**
+
+* *Tiêu đề:* `[Software Testing] HW01 - TC08_ChinhGocCuiNgua_PASS`
+* *Mô tả:*
+
+```text
+[Requirement3] Thiết kế và thực thi các test case cho thiết bị gia dụng (quạt máy)
+Demo TC08 - Thao tác gập cúi và ngửa cổ quạt (PASS).
+
+Họ tên: Trà Văn Sỹ
+MSSV: 23120197
+```
+
+**7. Video TC11:**
+
+* *Tiêu đề:* `[Software Testing] HW01 - TC11_GoGiuDayNguon_PASS`
+* *Mô tả:*
+
+```text
+[Requirement3] Thiết kế và thực thi các test case cho thiết bị gia dụng (quạt máy)
+Demo TC11 - Kéo dây điện tại gờ giữ ở chân đế (PASS).
+
+Họ tên: Trà Văn Sỹ
+MSSV: 23120197
+```
+
+**8. Video TC15:**
+
+* *Tiêu đề:* `[Software Testing] HW01 - TC15_RutCamNguonKhiGanNac_PASS`
+* *Mô tả:*
+
+```text
+[Requirement3] Thiết kế và thực thi các test case cho thiết bị gia dụng (quạt máy)
+Demo TC15 - Rút phích cắm và cắm lại khi phím đang gài (PASS).
+
+Họ tên: Trà Văn Sỹ
+MSSV: 23120197
+```
+
+**9. Video TC18 (TC-EDGE-03):**
+
+* *Tiêu đề:* `[Software Testing] HW01 - TC18_BamNutDoChung_HalfPress_FAIL`
+* *Mô tả:*
+
+```text
+[Requirement3] Thiết kế và thực thi các test case cho thiết bị gia dụng (quạt máy)
+Demo TC18/EDGE-03 - Bấm nút dở chừng 50%, cả 2 nút nhả gây tắt quạt (FAIL).
+
+Họ tên: Trà Văn Sỹ
+MSSV: 23120197
+```
